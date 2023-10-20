@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgresql-client
+  template:
+    metadata:
+      labels:
+        app: postgresql-client
+    spec:
+      containers:
+        - name: postgresql-client
+          image: postgres:latest
+          command: ["sleep", "infinity"]

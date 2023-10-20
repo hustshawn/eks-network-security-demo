@@ -1,0 +1,15 @@
+apiVersion: vpcresources.k8s.aws/v1beta1
+kind: SecurityGroupPolicy
+metadata:
+  name: sgp-demo
+  namespace: sgp-demo
+spec:
+  podSelector: 
+    matchLabels:
+      app: sgp-demo
+  securityGroups:
+    groupIds:
+      - sg-0ba044ac3b3e8272d  # SG of pod
+      - sg-05c4f470dc504c1cf  # SG of EKS cluster
+      # - POD_SG
+      # - EKS_SG

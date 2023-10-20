@@ -1,0 +1,6 @@
+.terraform
+planfile
+.terraform.lock.hcl
+terraform.tfstate*
+_backend.tf
+.DS_Store

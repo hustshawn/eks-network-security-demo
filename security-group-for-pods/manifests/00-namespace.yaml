@@ -1,0 +1,6 @@
+# It will be created alongside with the cluster
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: sgp-demo
+  
