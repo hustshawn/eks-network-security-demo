@@ -45,10 +45,9 @@ module "eks" {
   eks_managed_node_groups = {
     initial = {
       instance_types = ["m5.2xlarge"]
-
-      min_size     = 2
-      max_size     = 5
-      desired_size = 3
+      min_size       = 2
+      max_size       = 5
+      desired_size   = 3
     }
   }
 
@@ -69,8 +68,9 @@ module "eks" {
       }
 
       # Must enable network policy and security-group-for-pods support
+      # https://docs.aws.amazon.com/eks/latest/userguide/cni-network-policy.html
       configuration_values = jsonencode({
-        enableNetworkPolicy : "true",
+        enableNetworkPolicy = "true",
         env = {
           ENABLE_POD_ENI = "true"
           # Set to "standard" mode to make both network policies and security-group-for-pods work together
@@ -86,6 +86,11 @@ module "eks" {
 resource "kubernetes_namespace_v1" "sgp_demo_ns" {
   metadata {
     name = "sgp-demo"
+  }
+}
+resource "kubernetes_namespace_v1" "another-ns" {
+  metadata {
+    name = "another-ns"
   }
 }
 
